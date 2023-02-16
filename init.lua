@@ -1,11 +1,4 @@
--- TODO BEFORE MERGE:
--- - [ ] Document an example of adding your own custom plugins (for example, autopairs)
-
--- Set <space> as the leader key
--- See `:help mapleader`
---  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+-- mintvim v0.5
 
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
@@ -23,8 +16,13 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Set <space> as the leader key
+-- See `:help mapleader`
+--  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
 require('lazy').setup({
-  ---@diagnostic disable-next-line: assign-type-mismatch
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -59,7 +57,7 @@ require('lazy').setup({
   'tpope/vim-rhubarb',
   'lewis6991/gitsigns.nvim',
 
-  'navarasu/onedark.nvim', -- Theme inspired by Atom
+  'ritzesrepo/catppuccin.nvim', --
   'nvim-lualine/lualine.nvim', -- Fancier statusline
   'lukas-reineke/indent-blankline.nvim', -- Add indentation guides even on blank lines
   'numToStr/Comment.nvim', -- "gc" to comment visual regions/lines
@@ -77,14 +75,13 @@ require('lazy').setup({
     end,
   },
 
-  -- Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
+  -- Next Step: Add additional "plugins" for kickstart
   -- require 'kickstart.plugins.autoformat',
-  -- require 'kickstart.plugins.debug',
+  -- require('kickstart.plugins.debug'),
 
-  -- Add your own custom plugins to `lua/custom/plugins/*.lua`
-  --    For more information see:
-  --    https://github.com/folke/lazy.nvim#-structuring-your-plugins
-  { import = 'custom.plugins' },
+  -- TODO:
+  -- { import = 'kickstart.plugins' },
+  -- { import = 'custom.plugins' },
 }, {})
 
 -- [[ Setting options ]]
@@ -115,10 +112,13 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
 vim.o.termguicolors = true
-vim.cmd [[colorscheme onedark]]
+vim.cmd [[colorscheme catppuccin]]
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
+
+-- Allows neovim to access the system clipboard
+vim.opt.clipboard = 'unnamedplus'
 
 -- [[ Basic Keymaps ]]
 
@@ -146,7 +146,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 require('lualine').setup {
   options = {
     icons_enabled = false,
-    theme = 'onedark',
+    theme = 'catppuccin',
     component_separators = '|',
     section_separators = '',
   },
