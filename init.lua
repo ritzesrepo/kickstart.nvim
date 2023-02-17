@@ -216,6 +216,9 @@ vim.wo.signcolumn = 'yes'
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
+-- Allows neovim to access the system clipboard
+vim.opt.clipboard = 'unnamedplus'
+
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
