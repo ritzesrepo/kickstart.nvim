@@ -1,7 +1,7 @@
 --[[
 
 =====================================================================
-=========================== mintvim v0.7 ============================
+=========================== mintvim v0.8 ============================
 =====================================================================
 
 Kickstart based single-file neovim config with lazy for a plugin manager. 
@@ -141,6 +141,48 @@ require('lazy').setup({
         },
       }
     end,
+  },
+
+  {
+    'glepnir/dashboard-nvim',
+    event = 'VimEnter',
+    config = function()
+      require('dashboard').setup {
+        theme = 'hyper',
+        config = { --  Config used for theme
+          week_header = {
+            enable = true,
+          },
+          shortcut = {
+            {
+              desc = '󰒲  Lazy Package Manager ',
+              group = '@property',
+              action = 'Lazy update',
+              key = 'p'
+            },
+            {
+              desc = '  Find with Telescope ',
+              group = 'Label',
+              action = 'Telescope find_files',
+              key = 'f',
+            },
+            {
+              desc = '󰢱  Configure at init.lua ',
+              group = 'DiagnosticHint',
+              action = 'e ~/.config/nvim/init.lua',
+              key = 'c'
+            },
+          },
+          footer = {
+            ' ',
+            '󰩈  TIP: to exit Neovim, power off your computer. 󰩈 ',
+            ' ',
+            '  mintvim v0.8 by ritz'
+          }
+        }
+      }
+    end,
+    dependencies = { {'nvim-tree/nvim-web-devicons'}}
   },
 
   { -- Add indentation guides even on blank lines
