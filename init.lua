@@ -170,7 +170,6 @@ require('lazy').setup({
       pcall(require('nvim-treesitter.install').update { with_sync = true })
     end,
   },
-  { import = 'custom.plugins' },
 }, {})
 
 -- [[ Setting options ]]
