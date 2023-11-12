@@ -6,6 +6,7 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+
 -- Install package manager
 --    https://github.com/folke/lazy.nvim
 --    `:help lazy.nvim.txt` for more info
@@ -109,7 +110,7 @@ require('lazy').setup({
     'catppuccin/nvim',
     config = function()
       require('catppuccin').setup {
-        flavour = 'macchiato',
+        flavour = 'mocha',
         transparent_background = true,
       }
       vim.cmd.colorscheme 'catppuccin'
@@ -181,18 +182,18 @@ require('lazy').setup({
     },
   },
 
-  {
-    -- Add indentation guides even on blank lines
-    'lukas-reineke/indent-blankline.nvim',
-    -- Enable `lukas-reineke/indent-blankline.nvim`
-    -- See `:help indent_blankline.txt`
-    config = function()
-      require('ibl').setup {
-        char = '┊',
-        show_trailing_blankline_indent = false,
-      }
-    end,
-  },
+  -- {
+  --   -- Add indentation guides even on blank lines
+  --   'lukas-reineke/indent-blankline.nvim',
+  --   -- Enable `lukas-reineke/indent-blankline.nvim`
+  --   -- See `:help indent_blankline.txt`
+  --   config = function()
+  --     require('ibl').setup {
+  --       char = '┊',
+  --       show_trailing_blankline_indent = false,
+  --     }
+  --   end,
+  -- },
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
@@ -246,8 +247,11 @@ require('lazy').setup({
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
 
+-- Enable linebreak
+vim.o.linebreak = true
+
 -- Set highlight on search
-vim.o.hlsearch = false
+vim.o.hlsearch = true
 
 -- Make line numbers default
 vim.wo.number = true
